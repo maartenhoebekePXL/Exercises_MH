@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Address</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.min.js"></script>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="jquery.validate.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+</head>
+<body>
+<div class="container-sm">
+    <div class="row">
+        <div class="col heading">
+            <h1>Hakoona Burger</h1>
+        </div>
+    </div>
+    <div class="row main">
+        <div class="col">
+            <form class="container" id="address-form" method="post" action="">
+                <div class="row main-text-row">
+                    <div class="col d-flex justify-content-evenly">
+                        <h2>[%label('HAKOONA_BURGER','EX5_ADDRESS_TITLE')%]</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-7 col-md-7">
+                        <label for="Street">[%label('HAKOONA_BURGER','EX5_ADDRESS_STREET')%]</label><br>
+                        <input type="text" class="form-control" name="Street" id="Street">
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                        <label class="NumberBox"
+                               for="HouseNumber">[%label('HAKOONA_BURGER','EX5_ADDRESS_HOUSENUMBER')%]</label><br>
+                        <input type="number" class="form-control" name="HouseNumber" id="HouseNumber">
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                        <label class="NumberBox" for="Box">[%label('HAKOONA_BURGER','EX5_ADDRESS_BOX')%]</label><br>
+                        <input type="text" class="form-control" name="Box" id="Box">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="form-item" for="ZIP">[%label('HAKOONA_BURGER','EX5_ADDRESS_ZIP')%]</label><br>
+                        <input type="text" class="form-control" name="ZIP" id="ZIP">
+                    </div>
+                    <div class="col-md-9">
+                        <label class="form-item" for="City">[%label('HAKOONA_BURGER','EX5_ADDRESS_CITY')%]</label><br>
+                        <select id="City" name="City" disabled></select>
+                    </div>
+                </div>
+                <button action="[%LINK(100)%]" type="submit" class="btn">
+                    [%label('HAKOONA_BURGER','EX5_ADDRESS_NEXT')%]
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="footer row d-flex align-items-center">
+        <div class="col-md-12">
+            <p>@ Dignify</p>
+        </div>
+    </div>
+    <div id="div1"></div>
+</div>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .heading {
+        background-color: #8fd3d4;
+        color: #ffffff;
+        padding: 6px 10px;
+    }
+
+    .main {
+        background-color: #efefef;
+        padding: 80px 0;
+    }
+
+    .main-text-row {
+        padding-bottom: 18px;
+    }
+
+    .btn {
+        margin-top: 2rem;
+        padding: 4px 18px;
+        border-radius: 20px;
+        border: none;
+        background-color: #8fd3d4;
+        color: #fff;
+    }
+
+    input, select, option {
+        width: 100%;
+        height: 37.5px;
+    }
+
+    .form-item {
+        margin-top: 18px;
+    }
+    autocomplete
+
+    .footer {
+        font-weight: bold;
+        background-color: #000;
+        color: #fff;
+        height: 60px;
+        padding-left: 5px;
+    }
+
+    @media screen and (max-width: 767px) {
+        .NumberBox {
+            margin-top: 18px;
+        }
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $("#address-form").validate({
+            rules: {
+                Street: {
+                    required: true,
+                    minleng: 6,
+                    maxlength: 50
+                },
+                HouseNumber: {
+                    required: true,
+                    min: 1
+                },
+                Box: {
+                    required: true,
+                    maxLength: 4
+                },
+                ZIP: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 4
+                },
+                City: {
+                    required: true,
+                    maxlength: 50
+                }
+            },
+            submitHandler: function (form) {
+                form.submit();
+            }
+        });
+
+        $("#ZIP").keyup(function () {
+            $.ajax({
+                url: "https://webrebels.be/dignify/training/zipcity/",
+                data: {
+                    zip: $('#ZIP').val(),
+                    CITY: $('#City').val()
+                },
+                success: function (result) {
+                    $("#div1").html(result);
+                    $("#ZIPTEST").autocomplete({
+                        source: result.value
+                    });
+                    // let dropdownOptions = [];
+                    // if (data.length) {
+                    //     for (let item in data) {
+                    //         dropdownOptions[dropdownOptions.length] = '<option value="' + data[item].id + '">' + data[item].City + '</option>';
+                    //         $('#City').prop("disabled", true);
+                    //         $('#City').removeAttr("disabled");
+                    //     }
+                    // select.empty().append(dropdownOptions.join(''));
+                    // }
+                    // $("#City").html(result);
+                    // let optionText = $("#City").html(result);
+                    // let optionValue = 'value';
+                    //$("#City").find('option').remove();
+                    result = JSON.parse(result);
+                    $('select option').remove();
+                    let autoComplete = [];
+
+                    for (let i = 0; i < result.length; i++) {
+                        autoComplete.push(result[i].value);
+                        $("#ZIP").autocomplete({
+                            source: autoComplete
+                        });
+
+                        if (result[i].value === "") {
+                            autoComplete.remove('value');
+                        }
+
+                        // $.each(result, function (i, el) {
+                        //     if ($.inArray(el, autoComplete) === -1)
+                        //         autoComplete.push(el);
+                        // });
+
+
+                        $('#City').append(`<option value="${result[i].CITY}"> ${result[i].CITY} </option>`);
+                        $('select').removeAttr('disabled');
+                        if (result === "") {
+                            $("#City").attr('disabled');
+                        }
+
+                    }
+
+                    // $( function() {
+                    //     $.getJSON("http://neil.computer/stack/beta.json", function(data) {
+                    //         autoComplete = [];
+                    //         for (var i = 0, len = data.length; i < len; i++) {
+                    //             autoComplete.push(data[i].name + ", " + data[i].iata);
+                    //         }
+                    //         $( "#tags" ).autocomplete({
+                    //             source: autoComplete
+                    //         });
+                    //     });
+                    // });
+
+                    // let input = document.getElementById("#ZIP");
+                    // input.addEventListener("change", stateHandle);
+                    // let cityOptions = document.getElementById('City');
+                    //
+                    // function stateHandle() {
+                    //     if (document.getElementById("#ZIP").value === "") {
+                    //         cityOptions.disabled = true;
+                    //     } else {
+                    //         cityOptions.disabled = false;
+                    //     }
+                    // }
+
+                    // $('#ZIP').on('change', function (){
+                    //     $('select').removeAttr('disabled');
+                    // })
+
+                    // for (let i = 0; i < result.length; i++){
+                    //     if (result[i].CITY >= 1){
+                    //         $('City').prop('disabled', false);
+                    //     }
+                    //     else{
+                    //         $('City').prop('disabled', true);
+                    //     }
+                    // }
+                }
+            });
+        });
+        $('.btn').click(function () {
+            $('#address-form').submit();
+
+            /* $('#address-form').validate();
+             if ($('#address-form').valid()) {
+                 $('#address-form').submit();
+             } else {
+                 alert("Invalid from format.")
+             }*/
+        })
+    })
+
+    // document.getElementById('ZIP').addEventListener('input', checkZIP);
+    //
+    // function checkZIP() {
+    //     let zipCodeInput = document.getElementById('ZIP').target.value;
+    //     let zipCodeCheck = zipCodeInput.valid();
+    //     let zipCodeCheck = $('#ZIP').valid();
+    //     let cityDropdown = $('#City').valid();
+    //
+    //     if (zipCodeCheck === 4 && zipCodeCheck.match(/^\d+$/.test(zipCodeCheck))) {
+    //     }
+    // }
+
+    // function cityDropdown(cities) {
+    //     let cityOptions = document.getElementById('City');
+    //     cityOptions.innerHTML += "<option disabled></option>"
+    //     for (let i = 0; i < cities[i]; i++) {
+    //         let listOptions = document.createElement("option");
+    //         listOptions.value = listOptions[i];
+    //         listOptions.text = listOptions[i];
+    //         cityOptions.appendChild(listOptions);
+    //     }
+    // }
+
+
+    // if (zipCodeInput.length === 4 && zipCodeInput.match(/^\d+$/.test(zipCodeInput))) {
+    //     let zipCode = zipCodeInput.value();
+    //
+    //     fetch('https://webrebels.be/dignify/training/zipcity/')
+    //         .then(function (response) {
+    //             return response.json()
+    //         })
+    //         .then(function (data) {
+    //             let cities = data.cities;
+    //             cityDropdown(cities);
+    //             cityDropdown.removeAttribute('disabled');
+    //         })
+    //         .catch(function (error) {
+    //             console.log(error)
+    //         })
+    //
+    //     let xhttp = new XMLHttpRequest();
+    //     xhttp.onload = function () {
+    //         document.getElementsByTagName("input")[3].addEventListener(oninput(), $('#ZIP').load("https://webrebels.be/dignify/training/zipcity/"))
+    //     }
+    //     xhttp.open("GET", "http://training.dignify.agency/zipcity/validate.php", true);
+    //     xhttp.send();
+    //
+    //     $('#ZIP').load("https://webrebels.be/dignify/training/zipcity/", function (statusTxt) {
+    //         if (statusTxt === "success") {
+    //
+    //         }
+    //     })
+    //
+    // } else {
+    //     text = "Invalid ZIP code!";
+    //     document.getElementById("ZIP").innerHTML = text;
+    // }
+</script>
+</body>
+</html>

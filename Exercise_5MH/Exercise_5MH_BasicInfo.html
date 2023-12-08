@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.min.js"></script>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="jquery.validate.min.js"></script>
+</head>
+<body>
+<div class="container-sm">
+    <div class="row">
+        <div class="col heading">
+            <h1>Hakoona Burger</h1>
+        </div>
+    </div>
+    <div class="row main">
+        <div class="col">
+            <form class="container">
+                <div class="row main-text-row">
+                    <div class="col d-flex justify-content-evenly">
+                        <h2>[%label('HAKOONA_BURGER','EX5_BASIC_TITLE')%]</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="FirstName">[%label('HAKOONA_BURGER','EX5_BASIC_FIRSTNAME')%]</label><br>
+                        <input type="text" class="form-control" id="FirstName"
+                               placeholder="[%label('HAKOONA_BURGER','EX5_BASIC_FIRSTNAME_PLACEHOLDER')%]"
+                               minlength="2" maxlength="50" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="NameCol" for="LastName">[%label('HAKOONA_BURGER','EX5_BASIC_NAME')%]</label><br>
+                        <input type="text" class="form-control" id="LastName"
+                               placeholder="[%label('HAKOONA_BURGER','EX5_BASIC_NAME_PLACEHOLDER')%]" minlength="2"
+                               maxlength="50" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-item" for="Birthday">[%label('HAKOONA_BURGER','EX5_BASIC_BIRTHDAY')%]</label><br>
+                        <input type="date" class="form-control" id="Birthday" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-item" for="inputState">[%label('HAKOONA_BURGER','EX5_BASIC_GENDER')%]</label><br>
+                        <select class="form-control" id="inputState" required>
+                            <option>[%label('HAKOONA_BURGER','EX5_BASIC_MALE')%]</option>
+                            <option>[%label('HAKOONA_BURGER','EX5_BASIC_FEMALE')%]</option>
+                        </select>
+                    </div>
+                </div>
+                <button action="[%LINK(100)%]" type="submit" class="btn">[%label('HAKOONA_BURGER','EX5_BASIC_NEXT')%]
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="footer row d-flex align-items-center">
+        <div class="col-md-12">
+            <p>@ Dignify</p>
+        </div>
+    </div>
+</div>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .heading {
+        background-color: #8fd3d4;
+        color: #ffffff;
+        padding: 6px 10px;
+    }
+
+    .main {
+        background-color: #efefef;
+        padding: 80px 0;
+    }
+
+    .main-text-row {
+        padding-bottom: 18px;
+    }
+
+    .btn {
+        margin-top: 2rem;
+        padding: 4px 18px;
+        border-radius: 20px;
+        border: none;
+        background-color: #8fd3d4;
+        color: #fff;
+    }
+
+    input, select {
+        width: 100%;
+        height: 30px;
+    }
+
+    .form-item {
+        margin-top: 18px;
+    }
+
+    .footer {
+        font-weight: bold;
+        background-color: #000;
+        color: #fff;
+        height: 60px;
+        padding-left: 5px;
+    }
+
+    @media screen and (max-width: 767px) {
+        .NameCol {
+            margin-top: 18px;
+        }
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let birthdayInput = document.getElementById("Birthday");
+        let maxDate = new Date();
+        maxDate.setFullYear(maxDate.getFullYear() - 16);
+        let maxDateString = maxDate.toISOString().split('T')[0];
+        birthdayInput.setAttribute("max", maxDateString);
+    });
+</script>
+</body>
+</html>
