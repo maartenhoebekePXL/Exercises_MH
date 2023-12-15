@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Preferences</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../bootstrap-grid.min.css">
-    <link rel="stylesheet" href="../bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <script src="bootstrap.min.js"></script>
-    <script src="jquery-3.7.1.min.js"></script>
-    <script src="jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="[%resource('Exercises_MH/bootstrap-grid.min.css')%]">
+    <link rel="stylesheet" href="[%resource('Exercises_MH/bootstrap-reboot.min.css')%]">
+    <link rel="stylesheet" href="[%resource('Exercises_MH/bootstrap.min.css')%]">
+    <script src="[%resource('Exercises_MH/bootstrap.min.js')%]"></script>
+    <script src="[%resource('Exercises_MH/jquery-3.7.1.min.js')%]"></script>
+    <script src="[%resource('Exercises_MH/jquery.validate.min.js')%]"></script>
 </head>
 <body>
 <div class="container-sm">
@@ -20,7 +19,7 @@
     </div>
     <div class="row main">
         <div class="col">
-            <form class="container">
+            <form class="container" method="post" action="[%LINK(100)%]">
                 <div class="row main-text-row">
                     <div class="col d-flex justify-content-evenly">
                         <h2>[%label('HAKOONA_BURGER','EX5_PREFERENCES_TITLE')%]</h2>
@@ -28,49 +27,51 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="option1">[%label('HAKOONA_BURGER','EX5_PREFERENCES_PREFERENCE1')%]</label><br>
-                        <select class="form-control" id="option1" required>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_SPORT')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_POLITICS')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_TECHNOLOGY')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_FOOD')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_HEALTHCARE')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_MEDIA')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_REALESTATE')%]</option>
+                        <label value="PREFERENCE1" for="PREFERENCE1"></label><br>
+                        <select class="form-control" id="PREFERENCE1" name="PREFERENCE1" required>
+                            <option value="SPORT">[%label('HAKOONA_BURGER','EX5_PREFERENCES_SPORT')%]</option>
+                            <option value="POLITICS">[%label('HAKOONA_BURGER','EX5_PREFERENCES_POLITICS')%]</option>
+                            <option value="TECHNOLOGY">[%label('HAKOONA_BURGER','EX5_PREFERENCES_TECHNOLOGY')%]</option>
+                            <option value="FOOD">[%label('HAKOONA_BURGER','EX5_PREFERENCES_FOOD')%]</option>
+                            <option value="HEALTHCARE">[%label('HAKOONA_BURGER','EX5_PREFERENCES_HEALTHCARE')%]</option>
+                            <option value="MEDIA">[%label('HAKOONA_BURGER','EX5_PREFERENCES_MEDIA')%]</option>
+                            <option value="REALESTATE">[%label('HAKOONA_BURGER','EX5_PREFERENCES_REALESTATE')%]</option>
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label class="Preference2Col" for="option2">[%label('HAKOONA_BURGER','EX5_PREFERENCES_PREFERENCE2')%]</label><br>
-                        <select class="form-control" id="option2" required>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_SPORT')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_POLITICS')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_TECHNOLOGY')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_FOOD')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_HEALTHCARE')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_MEDIA')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_REALESTATE')%]</option>
+                        <label value="PREFERENCE2" class="Preference2Col" for="PREFERENCE2">[%label('HAKOONA_BURGER','EX5_PREFERENCES_PREFERENCE2')%]</label><br>
+                        <select class="form-control" id="PREFERENCE2" name="PREFERENCE2" required>
+                            <option value="SPORT">[%label('HAKOONA_BURGER','EX5_PREFERENCES_SPORT')%]</option>
+                            <option value="POLITICS">[%label('HAKOONA_BURGER','EX5_PREFERENCES_POLITICS')%]</option>
+                            <option value="TECHNOLOGY">[%label('HAKOONA_BURGER','EX5_PREFERENCES_TECHNOLOGY')%]</option>
+                            <option value="FOOD">[%label('HAKOONA_BURGER','EX5_PREFERENCES_FOOD')%]</option>
+                            <option value="HEALTHCARE">[%label('HAKOONA_BURGER','EX5_PREFERENCES_HEALTHCARE')%]</option>
+                            <option value="MEDIA">[%label('HAKOONA_BURGER','EX5_PREFERENCES_MEDIA')%]</option>
+                            <option value="REALESTATE">[%label('HAKOONA_BURGER','EX5_PREFERENCES_REALESTATE')%]</option>
                         </select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label class="form-item"
-                               for="option3">[%label('HAKOONA_BURGER','EX5_PREFERENCES_PREFERENCE3')%]</label><br>
-                        <select class="form-control" id="option3" required>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_SPORT')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_POLITICS')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_TECHNOLOGY')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_FOOD')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_HEALTHCARE')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_MEDIA')%]</option>
-                            <option>[%label('HAKOONA_BURGER','EX5_PREFERENCES_REALESTATE')%]</option>
+                        <label value="PREFERENCE3" class="form-item" for="PREFERENCE3">[%label('HAKOONA_BURGER','EX5_PREFERENCES_PREFERENCE3')%]</label><br>
+                        <select class="form-control" id="PREFERENCE3" name="PREFERENCE3" required>
+                            <option value="SPORT">[%label('HAKOONA_BURGER','EX5_PREFERENCES_SPORT')%]</option>
+                            <option value="POLITICS">[%label('HAKOONA_BURGER','EX5_PREFERENCES_POLITICS')%]</option>
+                            <option value="TECHNOLOGY">[%label('HAKOONA_BURGER','EX5_PREFERENCES_TECHNOLOGY')%]</option>
+                            <option value="FOOD">[%label('HAKOONA_BURGER','EX5_PREFERENCES_FOOD')%]</option>
+                            <option value="HEALTHCARE">[%label('HAKOONA_BURGER','EX5_PREFERENCES_HEALTHCARE')%]</option>
+                            <option value="MEDIA">[%label('HAKOONA_BURGER','EX5_PREFERENCES_MEDIA')%]</option>
+                            <option value="REALESTATE">[%label('HAKOONA_BURGER','EX5_PREFERENCES_REALESTATE')%]</option>
                         </select>
                     </div>
                 </div>
-                <button action="[%LINK(100)%]" type="submit" class="btn"
+                <button type="submit" class="btn"
                         onclick="alertValidIBAN(document.getElementById('Iban').value);">
                     [%label('HAKOONA_BURGER','EX5_PREFERENCES_NEXT')%]
                 </button>
+                <a href="[%LINK(101)%]"><button class="button2">
+                    [%label('HAKOONA_BURGER','EX5_ADDRESS_BACK')%]
+                </button></a>
             </form>
         </div>
     </div>
@@ -103,12 +104,20 @@
     }
 
     .btn {
-        margin-top: 2rem;
         padding: 4px 18px;
         border-radius: 20px;
         border: none;
         background-color: #8fd3d4;
         color: #fff;
+    }
+
+    .button2 {
+        margin-top: 2rem;
+        padding: 4px 18px;
+        border: none;
+        background-color: #efefef;
+        text-decoration: underline 2px #8fd3d4;
+        margin-left: 10px;
     }
 
     input, select {
@@ -132,12 +141,11 @@
         .Preference2Col {
             margin-top: 18px;
         }
+
+        .button2 {
+            margin-left: 0;
+        }
     }
 </style>
-<script>
-    function showCalender() {
-
-    }
-</script>
 </body>
 </html>

@@ -1,0 +1,121 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Audience list form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="padding: 0; margin: 0; box-sizing: border-box">
+<header style="background-color:#8fd3d4;color:#ffffff;padding:6px 10px;">
+    <h1>Hakoona Burger</h1>
+</header>
+<div class="container-sm">
+    <div class="row">
+        <div class="col heading">
+            <h1>Hakoona Burger</h1>
+        </div>
+    </div>
+    <div class="row main">
+        <div class="col">
+            <div class="container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="title" scope="col"><h2 class="text-break"></h2></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th class="text" scope="row">
+                            <article id="firstArticle">
+                                <sg:repeater id="PREF1" columns="0" dataselection="PREF1">
+                                    <sg:repeaterheader visible="false">
+
+                                    </sg:repeaterheader>
+                                    <sg:repeateritem content-value="" id="item-0dd8c41b-4d02-4ce3-a3d3-80d24e757991"
+                                                     name="Layout-1">
+                                        [%itemValue( 'TITLE' )%]
+                                        [%itemValue( 'CONTENT' )%]
+                                        [%itemValue( 'LINK' )%]
+                                    </sg:repeateritem>
+                                    <sg:repeaterfooter visible="false">
+
+                                    </sg:repeaterfooter>
+                                    <sg:repeaterempty visible="false">
+
+                                    </sg:repeaterempty>
+                                </sg:repeater>
+                            </article>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="text" scope="row">
+                            <article id="secondArticle">
+                                <sg:repeater id="PREF2" columns="0" dataselection="PREF2">
+                                    <sg:repeaterheader visible="false">
+
+                                    </sg:repeaterheader>
+                                    <sg:repeateritem content-value="" id="item-a1c24e88-7979-4e16-b701-7ac988a1abca"
+                                                     name="Layout-1">
+                                        [%itemValue( 'TITLE' )%]
+                                        [%itemValue( 'CONTENT' )%]
+                                        [%itemValue( 'LINK' )%]
+                                    </sg:repeateritem>
+                                    <sg:repeaterfooter visible="false">
+
+                                    </sg:repeaterfooter>
+                                    <sg:repeaterempty visible="false">
+
+                                    </sg:repeaterempty>
+                                </sg:repeater>
+                            </article>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="text" scope="row">
+                            <article id="thirdArticle">
+                                <sg:repeater id="PREF3" columns="0" dataselection="PREF3">
+                                    <sg:repeaterheader visible="false">
+
+                                    </sg:repeaterheader>
+                                    <sg:repeateritem content-value="" id="item-f1f46697-acc7-45a6-939d-c0ea7d3e50c4"
+                                                     name="Layout-1">
+                                        [%itemValue( 'TITLE' )%]
+                                        [%itemValue( 'CONTENT' )%]
+                                        [%itemValue( 'LINK' )%]
+                                    </sg:repeateritem>
+                                    <sg:repeaterfooter visible="false">
+
+                                    </sg:repeaterfooter>
+                                    <sg:repeaterempty visible="false">
+
+                                    </sg:repeaterempty>
+                                </sg:repeater>
+                            </article>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <button href="[%LINK(100)%]" type="button" class="btn">
+                                [%label('HAKOONA_BURGER','EX6_GO_BACK')%]
+                            </button>
+                            <br>
+                            <a href="[%LINK(101)%]" class="optout">[%label('HAKOONA_BURGER','EX4_CONFIRM_OPTOUT')%]</a>
+                            <a href="[%LINK(0)%]" class="webversion">Webversion</a>
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="footer row d-flex align-items-center">
+        <div class="col-md-12">
+            <p>@ Dignify</p>
+        </div>
+    </div>
+</div>
+<footer style="background-color:#000000; color:#ffffff; padding:1px 10px;">
+    <p style="font-weight:bold;">@ Dignify</p>
+</footer>
+</body>
+</html>

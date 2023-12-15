@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Address</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../bootstrap-grid.min.css">
-    <link rel="stylesheet" href="../bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <script src="bootstrap.min.js"></script>
-    <script src="jquery-3.7.1.min.js"></script>
-    <script src="jquery.validate.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="[%resource('Exercises_MH/bootstrap-grid.min.css')%]">
+    <link rel="stylesheet" href="[%resource('Exercises_MH/bootstrap-reboot.min.css')%]">
+    <link rel="stylesheet" href="[%resource('Exercises_MH/bootstrap.min.css')%]">
+    <script src="[%resource('Exercises_MH/bootstrap.min.js')%]"></script>
+    <script src="[%resource('Exercises_MH/jquery-3.7.1.min.js')%]"></script>
+    <script src="[%resource('Exercises_MH/jquery.validate.min.js')%]"></script>
 </head>
 <body>
 <div class="container-sm">
@@ -22,7 +19,7 @@
     </div>
     <div class="row main">
         <div class="col">
-            <form class="container" id="address-form" method="post" action="">
+            <form class="container" id="address-form" method="post" action="[%LINK(100)%]">
                 <div class="row main-text-row">
                     <div class="col d-flex justify-content-evenly">
                         <h2>[%label('HAKOONA_BURGER','EX5_ADDRESS_TITLE')%]</h2>
@@ -30,32 +27,38 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-7 col-md-7">
-                        <label for="Street">[%label('HAKOONA_BURGER','EX5_ADDRESS_STREET')%]</label><br>
-                        <input type="text" class="form-control" name="Street" id="Street">
+                        <label value="STREET" for="STREET">[%label('HAKOONA_BURGER','EX5_ADDRESS_STREET')%]</label><br>
+                        <input type="text" class="form-control" name="STREET" id="STREET">
                     </div>
                     <div class="col-lg-3 col-md-3">
-                        <label class="NumberBox"
-                               for="HouseNumber">[%label('HAKOONA_BURGER','EX5_ADDRESS_HOUSENUMBER')%]</label><br>
-                        <input type="number" class="form-control" name="HouseNumber" id="HouseNumber">
+                        <label value="NUMBER" class="NumberBox"
+                               for="NUMBER">[%label('HAKOONA_BURGER','EX5_ADDRESS_HOUSENUMBER')%]</label><br>
+                        <input type="number" class="form-control" name="NUMBER" id="NUMBER">
                     </div>
                     <div class="col-lg-2 col-md-2">
-                        <label class="NumberBox" for="Box">[%label('HAKOONA_BURGER','EX5_ADDRESS_BOX')%]</label><br>
-                        <input type="text" class="form-control" name="Box" id="Box">
+                        <label value="BOX" class="NumberBox"
+                               for="BOX">[%label('HAKOONA_BURGER','EX5_ADDRESS_BOX')%]</label><br>
+                        <input type="text" class="form-control" name="BOX" id="BOX">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <label class="form-item" for="ZIP">[%label('HAKOONA_BURGER','EX5_ADDRESS_ZIP')%]</label><br>
+                        <label value="ZIP" class="form-item"
+                               for="ZIP">[%label('HAKOONA_BURGER','EX5_ADDRESS_ZIP')%]</label><br>
                         <input type="text" class="form-control" name="ZIP" id="ZIP">
                     </div>
                     <div class="col-md-9">
-                        <label class="form-item" for="City">[%label('HAKOONA_BURGER','EX5_ADDRESS_CITY')%]</label><br>
-                        <select id="City" name="City" disabled></select>
+                        <label value="CITY" class="form-item"
+                               for="CITY">[%label('HAKOONA_BURGER','EX5_ADDRESS_CITY')%]</label><br>
+                        <select id="CITY" name="CITY" disabled></select>
                     </div>
                 </div>
-                <button action="[%LINK(100)%]" type="submit" class="btn">
+                <button type="submit" class="btn">
                     [%label('HAKOONA_BURGER','EX5_ADDRESS_NEXT')%]
                 </button>
+                <a href="[%LINK(101)%]"><button class="button2">
+                    [%label('HAKOONA_BURGER','EX5_ADDRESS_BACK')%]
+                </button></a>
             </form>
         </div>
     </div>
@@ -89,12 +92,20 @@
     }
 
     .btn {
-        margin-top: 2rem;
         padding: 4px 18px;
         border-radius: 20px;
         border: none;
         background-color: #8fd3d4;
         color: #fff;
+    }
+
+    .button2 {
+        margin-top: 2rem;
+        padding: 4px 18px;
+        border: none;
+        background-color: #efefef;
+        text-decoration: underline 2px #8fd3d4;
+        margin-left: 10px;
     }
 
     input, select, option {
@@ -105,7 +116,6 @@
     .form-item {
         margin-top: 18px;
     }
-    autocomplete
 
     .footer {
         font-weight: bold;
@@ -118,6 +128,10 @@
     @media screen and (max-width: 767px) {
         .NumberBox {
             margin-top: 18px;
+        }
+
+        .button2 {
+            margin-left: 0;
         }
     }
 </style>
