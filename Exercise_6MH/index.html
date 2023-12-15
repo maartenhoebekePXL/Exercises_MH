@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complete journey</title>
+    <link rel="stylesheet" href="../assets/files/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../assets/files/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="../assets/files/bootstrap.min.css">
+    <script src="../assets/files/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-sm">
+    <div class="row">
+        <div class="col heading">
+            <h1>Hakoona Burger</h1>
+        </div>
+    </div>
+    <div class="row main">
+        <div class="col">
+            <div class="container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="title" scope="col"><h2 class="text-break">
+                            [%label('HAKOONA_BURGER','EX6_TITLE')%]</h2></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th class="text" scope="row">[%label('HAKOONA_BURGER','EX6_TEXT')%]</th>
+                    </tr>
+                    <tr>
+                        <th class="text" scope="row">[%label('HAKOONA_BURGER','EX6_TEXT2')%]</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <button expr:href="LINK(100)" type="button" class="btn">
+                                [%label('HAKOONA_BURGER','EX6_GO_BACK')%]
+                            </button>
+                            <br>
+                            <a expr:href="LINK(101)" class="optout">[%label('HAKOONA_BURGER','EX4_CONFIRM_OPTOUT')%]</a>
+                            <a expr:href="LINK(0)" class="webversion">Webversion</a>
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="footer row d-flex align-items-center">
+        <div class="col-md-12">
+            <p>@ Dignify</p>
+        </div>
+    </div>
+</div>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .heading {
+        background-color: #8fd3d4;
+        color: #ffffff;
+        padding: 6px 10px;
+    }
+
+    .main {
+        background-color: #efefef;
+        padding: 49px 0;
+    }
+
+    table, th, td {
+        text-align: center;
+        border: none;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+
+    .title {
+
+    }
+
+    .btn {
+        margin-top: 2rem;
+        padding: 4px 18px;
+        border-radius: 20px;
+        border: none;
+        background-color: #8fd3d4;
+        color: #fff;
+    }
+
+    .optout {
+        display: block;
+        text-decoration: none;
+        color: #000dff;
+        margin-top: 15px;
+    }
+
+    .webversion {
+        display: block;
+        padding-top: 10px;
+        text-decoration: underline;
+    }
+
+    .footer {
+        font-weight: bold;
+        background-color: #000;
+        color: #fff;
+        height: 60px;
+        padding-left: 5px;
+    }
+</style>
+</body>
+</html>

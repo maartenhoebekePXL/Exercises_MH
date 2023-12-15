@@ -1,0 +1,84 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Check our burgers!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<p style="text-align: center;">Hey, [%proper( [MASTER.FIRST_NAME] )%]&nbsp;[%proper( [MASTER.NAME] )%]!</p>
+<br>
+<table class="table">
+    <thead>
+    <tr>
+        <th colspan="2" class="text-break">Check out our latest burgers!</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody class=".table-dark">
+    <tr>
+        <td>1</td>
+        <td>Chille zomer</td>
+        <td>€8,99</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>PXL burger</td>
+        <td>€5,40</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Dubbel vlees</td>
+        <td>€9,49</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Pikante spek</td>
+        <td>€7,49</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>
+<br>
+<div>
+    <a href="LINK(101)">Tell me more!</a>
+
+    <br>
+    <a href="LINK(100)" style="text-decoration:none;color:#000dff;">Opt out from all campaigns</a>
+
+    <br>
+    <a href="LINK(0)">Webversion</a>
+</div>
+<style type="text/css">body {
+    display: flex;
+    flex-direction: column;
+    justify content: center;
+}
+
+table {
+    border-collapse: collapse;
+    max-width: 600px;
+    border: 3px solid #3871CA;
+    align-self: center;
+    font-size: 22px;
+}
+
+th, td {
+    border: 1px solid #3871CA;
+    padding: 3px 10px;
+}
+
+td:nth-child(3) {
+    text-align: center;
+}
+
+div {
+    text-align: center;
+}
+
+a {
+    margin: 10px 0;
+}
+</style>
+</body>
+</html>

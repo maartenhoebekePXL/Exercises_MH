@@ -3,26 +3,134 @@
     <meta charset="UTF-8">
     <title>Audience list form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="[%resource('Exercises_MH/bootstrap-grid.min.css')%]">
+    <link rel="stylesheet" href="[%resource('Exercises_MH/bootstrap-reboot.min.css')%]">
+    <link rel="stylesheet" href="[%resource('Exercises_MH/bootstrap.min.css')%]">
+    <script src="[%resource('Exercises_MH/bootstrap.min.js')%]"></script>
+    <script src="[%resource('Exercises_MH/jquery-3.7.1.min.js')%]"></script>
+    <script src="[%resource('Exercises_MH/jquery.validate.min.js')%]"></script>
 </head>
-<body style="padding: 0; margin: 0; box-sizing: border-box">
-<header style="background-color:#8fd3d4;color:#ffffff;padding:6px 10px;">
-    <h1>Hakoona Burger</h1>
-</header>
-<main style="width:600px;margin:20px auto;">
-    <h2>[%label('HAKOONA_BURGER','EX3_LP_TITLE')%]</h2>
-    <form action="[%LINK(100)%]" method="POST" style="display:flex;flex-direction:column;align-items:center;">
-        <label for="MAIL"></label><br/>
-        <input id="MAIL" name="MAIL" style="width: 100%" type="text" maxlength="100"
-               value="[%loadValue(requestValue('MAIL'),'MAIL','')%]">
-        <br>
-        <button class="btn" id="btnSubmit"
-                style="margin-bottom: 8px; padding: 4px 18px; border-radius: 20px; border: none; background-color: #8fd3d4; color: #fff;"
-                type="submit">[%label('HAKOONA_BURGER','EX3_LP_SEND')%]
-        </button>
-    </form>
-</main>
-<footer style="background-color:#000;color:#fff;padding:1px 10px;">
-    <p style="font-weight:bold;">@ Dignify</p>
-</footer>
+<body>
+<div class="container-sm body-class text-break">
+    <div class="row heading">
+        <div class="col-md-12">
+            <h1>Hakoona Burger</h1>
+        </div>
+    </div>
+    <div class="row main">
+        <div class="col-md-12 d-flex justify-content-evenly align-items-center">
+            <div class="container">
+                <div class="row">
+                    <h2 class="main-titel d-flex justify-content-evenly">
+                        [%label('HAKOONA_BURGER','EX3_LP_TITLE')%]</h2>
+                </div>
+                <div class="row">
+                    <form action="[%LINK(100)%]" method="POST" class="mail-form">
+                        <label for="MAIL"></label>
+                        <br>
+                        <input id="MAIL" name="MAIL" type="text" maxlength="100"
+                               value="[%loadValue(requestValue('MAIL'),'MAIL','')%]">
+                        <br>
+                        <button class="btn" id="btnSubmit" type="submit">[%label('HAKOONA_BURGER','EX3_LP_SEND')%]
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row footer d-flex align-items-center">
+        <div class="col-md-12">
+            <p>@ Dignify</p>
+        </div>
+    </div>
+</div>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .body-class {
+        padding: 69px 0 50px 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .heading {
+        background-color: #8fd3d4;
+        color: #ffffff;
+        margin-top: -69px;
+        height: 69px;
+        padding: 6px 0 0 10px;
+    }
+
+    .main {
+        background-color: #efefef;
+        min-height: 100%;
+    }
+
+    .main-titel {
+        color: #000000;
+        text-decoration: none;
+    }
+
+    .mail-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #MAIL {
+        width: 60%;
+    }
+
+    .btn {
+        padding: 4px 18px;
+        border-radius: 20px;
+        border: none;
+        background-color: #8fd3d4;
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        max-width: 75%;
+    }
+
+    .footer {
+        font-weight: bold;
+        background-color: #000;
+        color: #fff;
+        margin-bottom: -50px;
+        height: 50px;
+        padding-left: 5px;
+    }
+
+    @media screen and (max-width: 575px) {
+        .heading {
+            margin: -69px 0 0 0;
+        }
+
+        .main {
+            margin: 0;
+        }
+
+        #MAIL {
+            width: 80%;
+        }
+
+        .footer {
+            margin: 0;
+        }
+    }
+</style>
 </body>
 </html>
