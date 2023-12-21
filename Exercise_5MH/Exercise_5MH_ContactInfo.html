@@ -11,15 +11,15 @@
     <script src="[%resource('Exercises_MH/jquery.validate.min.js')%]"></script>
 </head>
 <body>
-<div class="container-sm">
-    <div class="row">
-        <div class="col heading">
+<div class="container-sm body-class">
+    <div class="row heading">
+        <div class="col-md-12">
             <h1>Hakoona Burger</h1>
         </div>
     </div>
     <div class="row main">
-        <div class="col">
-            <form class="container" method="post" action="[%LINK(100)%]">
+        <div class="col-md-12 d-flex justify-content-evenly align-items-center">
+            <form class="container mail-form" method="post" action="[%LINK(100)%]">
                 <div class="row main-text-row">
                     <div class="col d-flex justify-content-evenly">
                         <h2>[%label('HAKOONA_BURGER','EX5_CONTACT_TITLE')%]</h2>
@@ -29,8 +29,8 @@
                     <div class="col-md-6">
                         <label value="MOBILE" for="MOBILE">[%label('HAKOONA_BURGER','EX5_CONTACT_MOBILE')%]</label><br>
                         <input type="tel" class="form-control" id="MOBILE" name="MOBILE" maxlength="12"
-                               placeholder="04-xxxx-xxxx"
-                               pattern="04-[0-9]{4}-[0-9]{4}" required>
+                               placeholder="04xxxxxxxx"
+                               pattern="04[0-9]{4}[0-9]{4}" required>
                     </div>
                     <div class="col-md-6">
                         <label value="IBAN" class="IbanBox"
@@ -47,24 +47,25 @@
                             <option selected>[%label('HAKOONA_BURGER','EX5_CONTACT_PROFESSION_STUDENT')%]</option>
                             <option>[%label('HAKOONA_BURGER','EX5_CONTACT_PROFESSION_EMPLOYEE')%]</option>
                             <option>[%label('HAKOONA_BURGER','EX5_CONTACT_PROFESSION_INDEPENDENT')%]</option>
-                            <option id="retirementOption">
-                                [%label('HAKOONA_BURGER','EX5_CONTACT_PROFESSION_RETIREMENT')%]
+                            <option value="retirement">[%label('HAKOONA_BURGER','EX5_CONTACT_PROFESSION_RETIREMENT')%]
                             </option>
                         </select>
                     </div>
-                    <div class="col-md-6" hidden>
-                        <label value="retirementDate" class="form-item"
-                               for="retirementDate">[%label('HAKOONA_BURGER','EX5_BASIC_BIRTHDAY')%]</label><br>
-                        <input type="date" class="form-control" id="retirementDate" name="retirementDate" required>
+                    <div id="RETIREMENTDATEINPUT" class="col-md-6" hidden>
+                        <label value="RETIREMENTDATE" class="form-item"
+                               for="RETIREMENTDATE">[%label('HAKOONA_BURGER','EX5_CONTACT_PROFESSION_RETIREMENT_DATE')%]</label><br>
+                        <input type="date" class="form-control" id="RETIREMENTDATE" name="RETIREMENTDATE" required>
                     </div>
                 </div>
                 <button type="submit" class="btn"
                         onclick="alertValidIBAN(document.getElementById('Iban').value);">
                     [%label('HAKOONA_BURGER','EX5_CONTACT_NEXT')%]
                 </button>
-                <a href="[%LINK(101)%]"><button class="button2">
-                    [%label('HAKOONA_BURGER','EX5_ADDRESS_BACK')%]
-                </button></a>
+                <a href="[%LINK(101)%]">
+                    <button class="button2">
+                        [%label('HAKOONA_BURGER','EX5_ADDRESS_BACK')%]
+                    </button>
+                </a>
             </form>
         </div>
     </div>
@@ -81,15 +82,32 @@
         box-sizing: border-box;
     }
 
+    body {
+        min-height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .body-class {
+        padding: 69px 0 50px 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
     .heading {
         background-color: #8fd3d4;
         color: #ffffff;
-        padding: 6px 10px;
+        padding: 6px 0 0 10px;
+        height: 69px;
+        margin-top: -69px;
     }
 
     .main {
         background-color: #efefef;
-        padding: 80px 0;
+        min-height: 100%;
     }
 
     .main-text-row {
@@ -97,11 +115,13 @@
     }
 
     .btn {
+        margin-top: 2rem;
         padding: 4px 18px;
         border-radius: 20px;
         border: none;
         background-color: #8fd3d4;
         color: #fff;
+        cursor: pointer;
     }
 
     .button2 {
@@ -111,6 +131,7 @@
         background-color: #efefef;
         text-decoration: underline 2px #8fd3d4;
         margin-left: 10px;
+        cursor: pointer;
     }
 
     input, select {
@@ -126,34 +147,48 @@
         font-weight: bold;
         background-color: #000;
         color: #fff;
-        height: 60px;
+        height: 50px;
         padding-left: 5px;
+        margin-bottom: -50px;
     }
 
-    @media screen and (max-width: 767px) {
-        .IbanBox {
-            margin-top: 18px;
+    @media screen and (max-width: 991px) {
+        .btn {
+            margin-top: 2rem;
         }
 
         .button2 {
             margin-left: 0;
         }
     }
+
+    @media screen and (max-width: 767px) {
+        .IbanBox {
+            margin-top: 18px;
+        }
+    }
+
+    @media screen and (max-width: 575px) {
+        .heading {
+            margin: -69px 0 0 0;
+        }
+
+        .footer {
+            margin: 0;
+        }
+    }
 </style>
 <script>
     function checkOption() {
-        let optionList = document.getElementById('inputState');
-        let selectedOption;
+        let optionList = document.getElementById('PROFESSION');
+        let retirementDateInput = document.getElementById('RETIREMENTDATEINPUT');
+        let selectedOption = optionList.options[optionList.selectedIndex];
 
-        for (let i = 0; i < optionList.length; i++) {
-            if (optionList[i].innerHTML === "[%label('HAKOONA_BURGER','EX5_CONTACT_PROFESSION_RETIREMENT')%]") {
-                selectedOption = optionList[i];
-                break;
-            }
+        if (selectedOption.value === 'retirement') {
+            retirementDateInput.removeAttribute('hidden');
+        } else {
+            retirementDateInput.setAttribute('hidden', 'true');
         }
-
-        selectedOption.removeAttribute("hidden");
-        selectedOption.setAttribute("hidden", false);
     }
 
     function validateIBAN(iban) {

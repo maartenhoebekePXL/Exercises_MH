@@ -9,17 +9,18 @@
     <script src="[%resource('Exercises_MH/bootstrap.min.js')%]"></script>
     <script src="[%resource('Exercises_MH/jquery-3.7.1.min.js')%]"></script>
     <script src="[%resource('Exercises_MH/jquery.validate.min.js')%]"></script>
+    <script src="[%resource('Exercises_MH/jquery-ui.js')%]"></script>
 </head>
 <body>
-<div class="container-sm">
-    <div class="row">
-        <div class="col heading">
+<div class="container-sm body-class">
+    <div class="row heading">
+        <div class="col-md-12">
             <h1>Hakoona Burger</h1>
         </div>
     </div>
     <div class="row main">
-        <div class="col">
-            <form class="container" id="address-form" method="post" action="[%LINK(100)%]">
+        <div class="col-md-12 d-flex justify-content-evenly align-items-center">
+            <form class="container mail-form" id="address-form" method="post" action="[%LINK(100)%]">
                 <div class="row main-text-row">
                     <div class="col d-flex justify-content-evenly">
                         <h2>[%label('HAKOONA_BURGER','EX5_ADDRESS_TITLE')%]</h2>
@@ -56,9 +57,11 @@
                 <button type="submit" class="btn">
                     [%label('HAKOONA_BURGER','EX5_ADDRESS_NEXT')%]
                 </button>
-                <a href="[%LINK(101)%]"><button class="button2">
-                    [%label('HAKOONA_BURGER','EX5_ADDRESS_BACK')%]
-                </button></a>
+                <a href="[%LINK(101)%]">
+                    <button class="button2">
+                        [%label('HAKOONA_BURGER','EX5_ADDRESS_BACK')%]
+                    </button>
+                </a>
             </form>
         </div>
     </div>
@@ -67,7 +70,7 @@
             <p>@ Dignify</p>
         </div>
     </div>
-    <div id="div1"></div>
+    <!--    <div id="div1"></div>-->
 </div>
 <style>
     * {
@@ -76,15 +79,32 @@
         box-sizing: border-box;
     }
 
+    body {
+        min-height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .body-class {
+        padding: 69px 0 50px 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
     .heading {
         background-color: #8fd3d4;
         color: #ffffff;
-        padding: 6px 10px;
+        padding: 6px 0 0 10px;
+        height: 69px;
+        margin-top: -69px;
     }
 
     .main {
         background-color: #efefef;
-        padding: 80px 0;
+        min-height: 100%;
     }
 
     .main-text-row {
@@ -92,11 +112,13 @@
     }
 
     .btn {
+        margin-top: 2rem;
         padding: 4px 18px;
         border-radius: 20px;
         border: none;
         background-color: #8fd3d4;
         color: #fff;
+        cursor: pointer;
     }
 
     .button2 {
@@ -106,6 +128,7 @@
         background-color: #efefef;
         text-decoration: underline 2px #8fd3d4;
         margin-left: 10px;
+        cursor: pointer;
     }
 
     input, select, option {
@@ -121,17 +144,92 @@
         font-weight: bold;
         background-color: #000;
         color: #fff;
-        height: 60px;
+        height: 50px;
         padding-left: 5px;
+        margin-bottom: -50px;
     }
 
-    @media screen and (max-width: 767px) {
-        .NumberBox {
-            margin-top: 18px;
+    .ui-autocomplete {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        float: left;
+        display: none;
+        min-width: 160px;
+        padding: 0;
+        margin: 0 0 10px 25px;
+        list-style: none;
+        background-color: #ffffff;
+        border-color: #ccc;
+        border-color: rgba(0, 0, 0, 0.2);
+        border-style: solid;
+        border-width: 1px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        -webkit-background-clip: padding-box;
+        -moz-background-clip: padding;
+        background-clip: padding-box;
+        *border-right-width: 2px;
+        *border-bottom-width: 2px;
+    }
+
+    .ui-menu-item {
+        display: block;
+        clear: both;
+        font-weight: normal;
+        line-height: 18px;
+        color: #555555;
+        white-space: nowrap;
+        text-decoration: none;
+    }
+
+    .ui-state-hover, .ui-state-active {
+        color: #ffffff;
+        text-decoration: none;
+        background-color: #8fd3d4;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        background-image: none;
+    }
+
+    .ui-menu-item-wrapper {
+        padding: 5px 8px;
+    }
+
+    .ui-helper-hidden-accessible {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    @media screen and (max-width: 991px) {
+        .btn {
+            margin-top: 2rem;
         }
 
         .button2 {
             margin-left: 0;
+        }
+    }
+
+    @media screen and (max-width: 575px) {
+        .heading {
+            margin: -69px 0 0 0;
+        }
+
+        .footer {
+            margin: 0;
         }
     }
 </style>
@@ -171,14 +269,14 @@
             $.ajax({
                 url: "https://webrebels.be/dignify/training/zipcity/",
                 data: {
+                    Street: $('#STREET').val(),
+                    HouseNumber: $('#NUMBER').val(),
+                    Box: $('#BOX').val(),
                     zip: $('#ZIP').val(),
-                    CITY: $('#City').val()
+                    CITY: $('#CITY').val()
                 },
                 success: function (result) {
                     $("#div1").html(result);
-                    $("#ZIPTEST").autocomplete({
-                        source: result.value
-                    });
                     // let dropdownOptions = [];
                     // if (data.length) {
                     //     for (let item in data) {
@@ -212,10 +310,10 @@
                         // });
 
 
-                        $('#City').append(`<option value="${result[i].CITY}"> ${result[i].CITY} </option>`);
+                        $('#CITY').append(`<option value="${result[i].CITY}"> ${result[i].CITY} </option>`);
                         $('select').removeAttr('disabled');
                         if (result === "") {
-                            $("#City").attr('disabled');
+                            $("#CITY").attr('disabled');
                         }
 
                     }

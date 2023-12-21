@@ -11,15 +11,15 @@
     <script src="[%resource('Exercises_MH/jquery.validate.min.js')%]"></script>
 </head>
 <body>
-<div class="container-sm">
-    <div class="row">
-        <div class="col heading">
+<div class="container-sm body-class">
+    <div class="row heading">
+        <div class="col-md-12">
             <h1>Hakoona Burger</h1>
         </div>
     </div>
     <div class="row main">
-        <div class="col">
-            <form class="container" method="post" action="[%LINK(100)%]">
+        <div class="col-md-12 d-flex justify-content-evenly align-items-center">
+            <form class="container mail-form" method="post" action="[%LINK(100)%]">
                 <div class="row main-text-row">
                     <div class="col d-flex justify-content-evenly">
                         <h2>[%label('HAKOONA_BURGER','EX5_PREFERENCES_TITLE')%]</h2>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label value="PREFERENCE1" for="PREFERENCE1"></label><br>
+                        <label value="PREFERENCE1" for="PREFERENCE1">[%label('HAKOONA_BURGER','EX5_PREFERENCES_PREFERENCE1')%]</label><br>
                         <select class="form-control" id="PREFERENCE1" name="PREFERENCE1" required>
                             <option value="SPORT">[%label('HAKOONA_BURGER','EX5_PREFERENCES_SPORT')%]</option>
                             <option value="POLITICS">[%label('HAKOONA_BURGER','EX5_PREFERENCES_POLITICS')%]</option>
@@ -69,9 +69,11 @@
                         onclick="alertValidIBAN(document.getElementById('Iban').value);">
                     [%label('HAKOONA_BURGER','EX5_PREFERENCES_NEXT')%]
                 </button>
-                <a href="[%LINK(101)%]"><button class="button2">
-                    [%label('HAKOONA_BURGER','EX5_ADDRESS_BACK')%]
-                </button></a>
+                <a href="[%LINK(101)%]">
+                    <button class="button2">
+                        [%label('HAKOONA_BURGER','EX5_ADDRESS_BACK')%]
+                    </button>
+                </a>
             </form>
         </div>
     </div>
@@ -88,15 +90,32 @@
         box-sizing: border-box;
     }
 
+    body {
+        min-height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .body-class {
+        padding: 69px 0 50px 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
     .heading {
         background-color: #8fd3d4;
         color: #ffffff;
-        padding: 6px 10px;
+        padding: 6px 0 0 10px;
+        height: 69px;
+        margin-top: -69px;
     }
 
     .main {
         background-color: #efefef;
-        padding: 80px 0;
+        min-height: 100%;
     }
 
     .main-text-row {
@@ -104,11 +123,13 @@
     }
 
     .btn {
+        margin-top: 2rem;
         padding: 4px 18px;
         border-radius: 20px;
         border: none;
         background-color: #8fd3d4;
         color: #fff;
+        cursor: pointer;
     }
 
     .button2 {
@@ -118,6 +139,7 @@
         background-color: #efefef;
         text-decoration: underline 2px #8fd3d4;
         margin-left: 10px;
+        cursor: pointer;
     }
 
     input, select {
@@ -133,17 +155,34 @@
         font-weight: bold;
         background-color: #000;
         color: #fff;
-        height: 60px;
+        height: 50px;
         padding-left: 5px;
+        margin-bottom: -50px;
+    }
+
+    @media screen and (max-width: 991px) {
+        .btn {
+            margin-top: 2rem;
+        }
+
+        .button2 {
+            margin-left: 0;
+        }
     }
 
     @media screen and (max-width: 767px) {
         .Preference2Col {
             margin-top: 18px;
         }
+    }
 
-        .button2 {
-            margin-left: 0;
+    @media screen and (max-width: 575px) {
+        .heading {
+            margin: -69px 0 0 0;
+        }
+
+        .footer {
+            margin: 0;
         }
     }
 </style>

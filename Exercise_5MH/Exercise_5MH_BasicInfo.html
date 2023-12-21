@@ -11,15 +11,15 @@
     <script src="[%resource('Exercises_MH/jquery.validate.min.js')%]"></script>
 </head>
 <body>
-<div class="container-sm">
-    <div class="row">
-        <div class="col heading">
+<div class="container-sm body-class text-break">
+    <div class="row heading">
+        <div class="col-md-12">
             <h1>Hakoona Burger</h1>
         </div>
     </div>
     <div class="row main">
-        <div class="col">
-            <form class="container" method="post" action="[%LINK(100)%]">
+        <div class="col-md-12 d-flex justify-content-evenly align-items-center">
+            <form class="container mail-form" method="post" action="[%LINK(100)%]">
                 <div class="row main-text-row">
                     <div class="col d-flex justify-content-evenly">
                         <h2>[%label('HAKOONA_BURGER','EX5_BASIC_TITLE')%]</h2>
@@ -59,7 +59,7 @@
             </form>
         </div>
     </div>
-    <div class="footer row d-flex align-items-center">
+    <div class="row footer d-flex align-items-center">
         <div class="col-md-12">
             <p>@ Dignify</p>
         </div>
@@ -72,15 +72,32 @@
         box-sizing: border-box;
     }
 
+    body {
+        min-height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .body-class {
+        padding: 69px 0 50px 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
     .heading {
         background-color: #8fd3d4;
         color: #ffffff;
-        padding: 6px 10px;
+        padding: 6px 0 0 10px;
+        height: 69px;
+        margin-top: -69px;
     }
 
     .main {
         background-color: #efefef;
-        padding: 80px 0;
+        min-height: 100%;
     }
 
     .main-text-row {
@@ -94,6 +111,7 @@
         border: none;
         background-color: #8fd3d4;
         color: #fff;
+        cursor: pointer;
     }
 
     input, select {
@@ -109,8 +127,9 @@
         font-weight: bold;
         background-color: #000;
         color: #fff;
-        height: 60px;
+        height: 50px;
         padding-left: 5px;
+        margin-bottom: -50px;
     }
 
     @media screen and (max-width: 767px) {
@@ -118,10 +137,20 @@
             margin-top: 18px;
         }
     }
+
+    @media screen and (max-width: 575px) {
+        .heading {
+            margin: -69px 0 0 0;
+        }
+
+        .footer {
+            margin: 0;
+        }
+    }
 </style>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        let birthdayInput = document.getElementById("Birthday");
+        let birthdayInput = document.getElementById("BIRTH_DT");
         let maxDate = new Date();
         maxDate.setFullYear(maxDate.getFullYear() - 16);
         let maxDateString = maxDate.toISOString().split('T')[0];

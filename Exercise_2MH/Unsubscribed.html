@@ -3,19 +3,109 @@
     <meta charset="UTF-8">
     <title>Unsubscribed</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="[%resource('Exercises_MH/bootstrap-grid.min.css')%]">
+    <link rel="stylesheet" href="[%resource('Exercises_MH/bootstrap-reboot.min.css')%]">
+    <link rel="stylesheet" href="[%resource('Exercises_MH/bootstrap.min.css')%]">
+    <script src="[%resource('Exercises_MH/bootstrap.min.js')%]"></script>
+    <script src="[%resource('Exercises_MH/jquery-3.7.1.min.js')%]"></script>
+    <script src="[%resource('Exercises_MH/jquery.validate.min.js')%]"></script>
 </head>
-<body style="padding: 0; margin: 0; box-sizing: border-box; width: 100%">
-<header style="background-color: #8fd3d4; color: #ffffff; padding: 6px 10px">
-    <h1>Hakoona Burger</h1>
-</header>
-<main style="width: 600px; margin: 20px auto">
-    <h2>We're sorry to see you go!</h2>
-    <p>Your email address [%[MASTER.MAIL]%], has been unsubscribed from our newsletter!</p>
-    <br>
-    <a href="[%LINK(100)%]" style="text-decoration: none; color: #000dff"><span>Did it happen by accident or do you want to resubscribe?</span></a>
-</main>
-<footer style="background-color: #000; color: #fff; padding: 1px 10px">
-    <p style="font-weight: bold">@ Dignify</p>
-</footer>
+<body>
+<div class="container-sm body-class">
+    <div class="row heading">
+        <div class="col-md-12">
+            <h1>Hakoona Burger</h1>
+        </div>
+    </div>
+    <div class="row main">
+        <div class="col-md-12 d-flex justify-content-evenly align-items-center">
+            <form class="container mail-form" method="post" action="[%LINK(100)%]">
+                <div class="row main-text-row">
+                    <div class="col d-flex justify-content-center">
+                        <h2>We're sorry to see you go!</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col d-flex justify-content-center">
+                        <p>Your email address [%[MASTER.MAIL]%], has been unsubscribed from our newsletter!</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col d-flex justify-content-center">
+                        <a href="[%LINK(100)%]" style="text-decoration: none; color: #000dff"><span>Did it happen by accident or do you want to resubscribe?</span></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer row d-flex align-items-center">
+        <div class="col-md-12">
+            <p>@ Dignify</p>
+        </div>
+    </div>
+</div>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .body-class {
+        padding: 69px 0 50px 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .heading {
+        background-color: #8fd3d4;
+        color: #ffffff;
+        padding: 6px 0 0 10px;
+        height: 69px;
+        margin-top: -69px;
+    }
+
+    .main {
+        background-color: #efefef;
+        min-height: 100%;
+    }
+
+    .main-text-row {
+        padding-bottom: 18px;
+    }
+
+    a {
+        cursor: pointer;
+        color: #0000ff;
+    }
+
+    .footer {
+        font-weight: bold;
+        background-color: #000;
+        color: #fff;
+        height: 50px;
+        padding-left: 5px;
+        margin-bottom: -50px;
+    }
+
+    @media screen and (max-width: 575px) {
+        .heading {
+            margin: -69px 0 0 0;
+        }
+
+        .footer {
+            margin: 0;
+        }
+    }
+</style>
 </body>
 </html>
